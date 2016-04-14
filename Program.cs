@@ -23,7 +23,7 @@ namespace Pttcheck
                 var printoutput = false;
                 wc.Headers.Add("user-agent", "Dalvik/1.4.0 (Linux; U; Android 2.3.3; sdk Build/GRI34)"); //Useragent kontrolü yazpıyor
                 var barkod = config[0]; //Kodu buraya yazın, örnek: RA123456789SG
-                var veri = "test";
+                var veri = "";
                 while (true)
                 {
                     var gelenveri = wc.DownloadString("http://212.175.152.18/cepptt/android/posta/yurtDisiKargoSorgula?barkod=" + barkod);
