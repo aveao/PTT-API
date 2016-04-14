@@ -16,14 +16,14 @@ namespace Pttcheck
         static WebClient wc = new WebClient();
         static void Main(string[] args)
         {
-            InitiateSSLTrust();
+            InitiateSSLTrust(); //SSL sertifikaları olmadığından geçmek zorundayız :(
             if (File.Exists("config.ini"))
             {
                 var config = File.ReadAllLines("config.ini");
                 var printoutput = false;
-                wc.Headers.Add("user-agent", "Dalvik/1.4.0 (Linux; U; Android 2.3.3; sdk Build/GRI34)"); //Useragent kontrolü yapıyor
+                wc.Headers.Add("user-agent", "Dalvik/1.4.0 (Linux; U; Android 2.3.3; sdk Build/GRI34)"); //Useragent kontrolü yazpıyor
                 var barkod = config[0]; //Kodu buraya yazın, örnek: RA123456789SG
-                var veri = "";
+                var veri = "test";
                 while (true)
                 {
                     var gelenveri = wc.DownloadString("http://212.175.152.18/cepptt/android/posta/yurtDisiKargoSorgula?barkod=" + barkod);
@@ -64,14 +64,14 @@ namespace Pttcheck
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
-                smtp.Credentials = new NetworkCredential(config[1], config[2]);
+                smtp.Credentials = new NetworkCredential(config[1], config[3]);
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
                 Console.WriteLine("Mail gönderildi!");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Mailde hata :(");
+                Console.WriteLine("Mailde hata :( Sebep: " + ex.Message);
                 //Tembellik
             }
         }
