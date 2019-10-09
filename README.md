@@ -1,6 +1,3 @@
-# PTT Kargo Takip
-PTT sisteminde kargo aramak icin API kullanan ornek bir script.
+# PTT Shipment Tracking APIs
 
-Barkodlari satir 7'ye yerlestirip python3 ile calistirabilirsiniz.
-
-![](https://s.ave.zone/afa0.png)
+Moved to: https://gitlab.com/a/PTT-API
